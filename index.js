@@ -1,23 +1,20 @@
 const express = require('express');
-const { faker } = require('@faker-js/faker');
+const routerApi = require('./routes');
 
 const app = express();
 const port = 3000;
 
 let contador = 0;
 
-app.use(express.json());
-
-let products = [
-    { id: 10, name: 'Iphone', price: 1200 },
-    { id: 20, name: 'Ipad', price: 2500 }
-];
+//app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('Hola este mi server en express :D wiri');
 });
 
-app.get('/users', (req, res) => {
+routerApi(app);
+
+/* app.get('/users', (req, res) => {
     const { limit, offset } = req.query;
     if ( limit && offset ) {
         res.json({
@@ -28,28 +25,6 @@ app.get('/users', (req, res) => {
         res.send('No hay parametros :/');
     }
    
-});
-
-app.get('/products', (req, res) => {
-    const products= [];
-    const { size } = req.query;
-    const limit = size || 5;
-    for (let index = 0; index < limit; index++) {
-        products.push(
-            {
-                name: faker.commerce.productName(),
-                price: parseInt(faker.commerce.price()),
-                image: faker.image.url(),
-            }
-        )
-        
-    }
-    res.json(products);
-});
-
-app.get('/products/:id', (req, res) => {
-    const { id } = req.params;
-    res.json( { id, name: 'Ipad', price: 2500 });
 });
 
 app.get('/categories/:categoryId/products/:productId', (req, res) => {
@@ -111,7 +86,7 @@ app.delete('/products/:id', (req, res) => {
     res.status(200).json({
         message: 'Producto eliminado'
     });
- });
+ });*/
 
 app.listen(port, () => {
     console.log(`este es el puerto: ${port}`);
