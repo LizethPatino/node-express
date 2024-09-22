@@ -7,7 +7,7 @@ router.use(express.json());
 
 let contador = 0;
 
-const productsFake = [{"name":"Handmade Granite Pizza","price":258,"image":"https://loremflickr.com/901/3665?lock=852744387624490"},{"name":"Awesome Wooden Chips","price":21,"image":"https://loremflickr.com/3789/2094?lock=6257640137895280"},{"name":"Oriental Soft Sausages","price":386,"image":"https://picsum.photos/seed/sw6ryhO8o/1855/1714"},{"name":"Ergonomic Fresh Shirt","price":157,"image":"https://loremflickr.com/3580/2857?lock=7308079344348695"},{"name":"Licensed Fresh Ball","price":479,"image":"https://loremflickr.com/3867/194?lock=8030333667705211"}];
+const productsFake = [{"id":3,"name":"Handmade Granite Pizza","price":258,"image":"https://loremflickr.com/901/3665?lock=852744387624490"},{ id:4, "name":"Awesome Wooden Chips","price":21,"image":"https://loremflickr.com/3789/2094?lock=6257640137895280"},{"name":"Oriental Soft Sausages","price":386,"image":"https://picsum.photos/seed/sw6ryhO8o/1855/1714"},{"name":"Ergonomic Fresh Shirt","price":157,"image":"https://loremflickr.com/3580/2857?lock=7308079344348695"},{"name":"Licensed Fresh Ball","price":479,"image":"https://loremflickr.com/3867/194?lock=8030333667705211"}];
 
 router.get('/', (req, res) => {
     const products= [];
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
         )
         
     }
-    res.json(products);
+    res.status(200).json(products);
 });
 
 router.get('/filter', (req, res) => {

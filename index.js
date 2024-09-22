@@ -8,8 +8,6 @@ app.get('/', (req, res) => {
     res.send('Hola este mi server en express :D wiri');
 });
 
-
-
 routerApi(app);
 
 /* 
