@@ -37,7 +37,9 @@ router.get('/:id',
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', 
+    validatorHandler(createProductSchema, 'body'),
+    async (req, res) => {
     const body = req.body;
     const newProduct = await service.create(body);
     res.status(201).json({
@@ -46,7 +48,10 @@ router.post('/', async (req, res) => {
     });
 });
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', 
+    validatorHandler(getProductSchema, 'params'),
+    validatorHandler(updateProductSchema, 'body'),
+    async (req, res, next) => {
    const id = req.params.id;
    const body = req.body; 
    try {
