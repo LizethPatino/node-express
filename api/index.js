@@ -39,5 +39,3 @@ app.get('/categories/:categoryId/products/:productId', (req, res) => {
 app.listen(port, () => {
     console.log(`este es el puerto: ${port}`);
 });
-
-module.exports = app;
